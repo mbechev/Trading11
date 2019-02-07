@@ -3,7 +3,6 @@ import { AppConfig } from 'src/app/config/app.config';
 import { Component, Injectable, OnInit, } from '@angular/core';
 import { GridOptions, } from 'ag-grid-community';
 import { MatDialog } from '@angular/material';
-import { NotificationService } from 'src/app/core/notification.service';
 import { OrdersService } from 'src/app/core/order.service';
 import { ClosePosModalComponent } from './close-position-modal/close-pos.modal.component';
 
@@ -17,6 +16,7 @@ export class PortfolioComponent implements OnInit {
     private portfolioGrid: string;
     public gridOptions: GridOptions;
     private columnDefs = [
+        { headerName: 'Order id', field: 'id', width: 80 },
         { headerName: 'Symbol', field: 'symbol' },
         { headerName: 'Direction', field: 'direction' },
         { headerName: 'Units', field: 'units' },
@@ -26,7 +26,6 @@ export class PortfolioComponent implements OnInit {
 
     constructor(
         public dialog: MatDialog,
-        private notification: NotificationService,
         private orderService: OrdersService,
         private appConfig: AppConfig,
     ) { }
@@ -51,6 +50,7 @@ export class PortfolioComponent implements OnInit {
                     units: event.data.units,
                     companyId: '',
                     closePrice: '',
+                    id: event.data.id,
                 };
                 this.orderService.closeOrder(orderBody, event.data.symbol);
             }

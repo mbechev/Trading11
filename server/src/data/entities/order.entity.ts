@@ -6,7 +6,6 @@ import {
   PrimaryGeneratedColumn,
   Entity,
   ManyToOne,
-  OneToOne,
 } from 'typeorm';
 
 @Entity({
@@ -28,19 +27,19 @@ export class Order {
   @ManyToOne(type => Company, company => company.orders, { eager: true })
   company: Company;
 
-  @Column()
+  @Column({ type: 'decimal', precision: 10, scale: 4 })
   openPrice: number;
 
-  @Column({ nullable: true, default: null })
+  @Column({ nullable: true, default: null, type: 'decimal', precision: 10, scale: 4 })
   closePrice: number;
 
-  @Column()
+  @Column({ type: 'decimal', precision: 10, scale: 4 })
   units: number;
 
   @ManyToOne(type => Status, status => status.orders, { eager: true })
   status: Status;
 
-  @Column({ nullable: true, default: null })
+  @Column({ nullable: true, default: null, type: 'decimal', precision: 10, scale: 4 })
   result: number;
   @Column()
   direction: string;

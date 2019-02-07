@@ -67,9 +67,9 @@ export class OrderController {
     @Post('/close')
     @Roles('manager')
     @UseGuards(AuthGuard(), RolesGuard)
-    getClosed(@Body() id: IdDTO) {
+    async getClosed(@Body() id: IdDTO) {
         try {
-            return this.ordersService.getClosedOrders(id);
+            return await this.ordersService.getClosedOrders(id);
         } catch (error) {
             throw new BadRequestException('Can\'t close orders!');
         }

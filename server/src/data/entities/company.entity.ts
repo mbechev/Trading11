@@ -25,15 +25,6 @@ export class Company {
   @Column({ default: '' })
   abbr: string;
 
-  @Column({ default: '' })
-  icon: string;
-
-  @Column({ default: '' })
-  ceo: string;
-
-  @Column({ default: '' })
-  address: string;
-
   @Column()
   closedate: Date;
 

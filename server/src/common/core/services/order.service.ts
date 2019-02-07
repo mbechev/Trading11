@@ -82,9 +82,8 @@ export class OrderService {
     async closeOrder(closeOrder: CloseOrderDTO): Promise<Order> {
         try {
             const order: Order = await this.orderRepository.findOne({
-                where: { company: closeOrder.companyId, units: closeOrder.units, openPrice: closeOrder.price, direction: closeOrder.direction },
+                where: { id: closeOrder.id, units: closeOrder.units, openPrice: closeOrder.price, direction: closeOrder.direction },
             });
-
             order.closedate = new Date();
             order.closePrice = +closeOrder.closePrice;
             order.status = await this.statusRepository.findOne({ where: { statusname: 'closed' } });
@@ -97,9 +96,7 @@ export class OrderService {
                     result = +result;
                 }
             }
-
             order.result = result * order.units;
-
             return await this.orderRepository.save(order);
         } catch (error) {
             throw new HttpException('Orders not found!', HttpStatus.NOT_FOUND);
@@ -108,7 +105,6 @@ export class OrderService {
     }
 
     async getClosedOrders(clientId: IdDTO) {
-
         const foundStatus = await this.statusRepository.findOne({ where: { statusname: 'closed' } });
         const foundClosedOrders = await this.orderRepository.find({
             where: {
@@ -116,13 +112,8 @@ export class OrderService {
                 status: foundStatus.id,
             },
         });
-
         if (!foundClosedOrders) {
             throw new HttpException('Closed orders not found!', HttpStatus.NOT_FOUND);
-        }
-
-        if (foundClosedOrders.length === 0) {
-            throw new BadRequestException('Client has no closed orders');
         }
         return foundClosedOrders;
     }

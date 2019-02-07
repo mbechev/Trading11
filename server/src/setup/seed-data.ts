@@ -127,9 +127,6 @@ createConnection().then(async (conn) => {
     company1.name = 'Amazon';
     company1.industry = firstIndustry;
     company1.abbr = 'AMZN';
-    company1.address = 'California, USA';
-    company1.ceo = 'Jeff Bezos';
-    company1.icon = '__MISSING__';
     company1.closedate = new Date(2000, 0, 0, 12, 0);
     await companyRepo.save(company1);
 
@@ -138,9 +135,6 @@ createConnection().then(async (conn) => {
     company2.name = 'Bitcoin';
     company2.industry = secondIndustry;
     company2.abbr = 'BTC';
-    company2.address = 'None';
-    company2.ceo = 'Roger Ver';
-    company2.icon = '__MISSING__';
     company2.closedate = new Date(2000, 0, 0, 8, 0);
     await companyRepo.save(company2);
 
@@ -148,9 +142,6 @@ createConnection().then(async (conn) => {
     company3.name = 'Ethereum';
     company3.industry = secondIndustry;
     company3.abbr = 'ETH';
-    company3.address = 'None';
-    company3.ceo = 'Vitalik Buterin';
-    company3.icon = '__MISSING__';
     company3.closedate = new Date(2000, 0, 0, 6, 0);
     await companyRepo.save(company3);
 
@@ -159,9 +150,6 @@ createConnection().then(async (conn) => {
     company4.name = 'American Airlines Group';
     company4.industry = fourthIndustry;
     company4.abbr = 'AAL';
-    company4.address = 'Texas, USA';
-    company4.ceo = 'Dough Parker';
-    company4.icon = '__MISSING__';
     company4.closedate = new Date(2000, 0, 0, 6, 0);
     await companyRepo.save(company4);
 

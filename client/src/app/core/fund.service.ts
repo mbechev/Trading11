@@ -9,7 +9,6 @@ import { UserInfoDTO } from '../models/userInfo.dto';
 
 @Injectable()
 export class FundsService {
-    public user = new BehaviorSubject<object>({});
     constructor(
         private notificationService: NotificationService,
         private fundsHttpService: FundsHttpService,
@@ -28,7 +27,6 @@ export class FundsService {
                 }
                 this.fundsHttpService.substractFund(clientCred).subscribe();
                 this.notificationService.openSnackBar('Successful payment', 'OK', 'green');
-                this.user.next(response);
             }
         );
     }

@@ -4,4 +4,5 @@ export class CloseOrderDTO {
     direction: string;
     price: string;
     closePrice: string;
+    id: string;
 }

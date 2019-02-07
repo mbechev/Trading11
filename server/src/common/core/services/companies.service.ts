@@ -32,9 +32,6 @@ export class CompaniesService {
         const company = new Company();
         company.name = companyDTO.name;
         company.abbr = companyDTO.abbr;
-        company.icon = companyDTO.icon;
-        company.ceo = companyDTO.ceo;
-        company.address = companyDTO.address;
         company.industry = industry;
         company.closedate = new Date();
 
@@ -52,9 +49,6 @@ export class CompaniesService {
 
         companyFound.name = companyDTO.name;
         companyFound.abbr = companyDTO.abbr;
-        companyFound.icon = companyDTO.icon;
-        companyFound.ceo = companyDTO.ceo;
-        companyFound.address = companyDTO.address;
 
         if (companyDTO.industryId) {
             const industry = await this.industryRepository.findOne({ where: { id: companyDTO.industryId } });
@@ -70,36 +64,6 @@ export class CompaniesService {
             where: { id },
         });
     }
-
-    // async getCompaniesByIndustry(id: string) {
-    //     const industry = await this.industryRepository.findOne({ where: { id } });
-
-    //     if (!industry) {
-    //         throw new HttpException('Industry not found!', HttpStatus.NOT_FOUND);
-    //     }
-
-    //     return await this.companyRepository.find({ where: { industry } });
-    // }
-
-    // async getCompanyTimesListed(id: string) {
-    //     const companyFound = await this.companyRepository.findOne({ where: { id } });
-
-    //     if (!companyFound) {
-    //         throw new HttpException('Company not found!', HttpStatus.NOT_FOUND);
-    //     }
-
-    //     const companies = await this.watchlistRepository.find({ where: { companyFound } });
-
-    //     return companies.length;
-    // }
-
-    // async getAll() {
-    //     try {
-    //         return this.companyRepository.find();
-    //     } catch (error) {
-    //         throw new BadRequestException('No companies to show');
-    //     }
-    // }
     async getCompany(companySymbol) {
         try {
             const company = await this.companyRepository.findOne({ where: { abbr: companySymbol.abbr } });

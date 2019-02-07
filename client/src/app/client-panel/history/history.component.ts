@@ -1,4 +1,3 @@
-import { OrdersHttpService } from './../../core/order.http.service';
 import { AppConfig } from 'src/app/config/app.config';
 import { Component, Injectable, OnInit, } from '@angular/core';
 import { GridOptions, } from 'ag-grid-community';
@@ -9,7 +8,7 @@ import { GridOptions, } from 'ag-grid-community';
     templateUrl: './history.component.html',
 })
 export class HistoryComponent implements OnInit {
-    private portfolioGrid: string;
+    private historyGrid: string;
     public gridOptions: GridOptions;
     private columnDefs = [
         { headerName: 'Symbol', field: 'symbol', width: 150 },
@@ -31,11 +30,10 @@ export class HistoryComponent implements OnInit {
     ];
 
     constructor(
-        private orderHttpService: OrdersHttpService,
         private appConfig: AppConfig,
     ) { }
     ngOnInit() {
-        this.portfolioGrid = this.appConfig.historyGrid;
+        this.historyGrid = this.appConfig.historyGrid;
     }
     numberParser(params) {
         const newValue = params.newValue;

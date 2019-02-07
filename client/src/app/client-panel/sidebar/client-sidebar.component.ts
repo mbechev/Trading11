@@ -1,8 +1,7 @@
 import { UserInfoDTO } from './../../models/userInfo.dto';
-import { Component, Injectable, OnInit, Input, Renderer2, OnChanges, } from '@angular/core';
+import { Component, Injectable, OnInit, Input, Renderer2, } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersHttpService } from 'src/app/core/user.http.service';
-import { OrdersService } from 'src/app/core/order.service';
 import { OrdersHttpService } from 'src/app/core/order.http.service';
 
 @Injectable()
@@ -44,7 +43,7 @@ export class ClientSidebarComponent implements OnInit {
         this.usersHttpService.retrieveUserData(email).subscribe(
             (response: UserInfoDTO) => {
                 this.balance = response.funds.currentamount;
-                document.getElementsByClassName('text-white')[1].textContent = `Balance: ${this.balance}.00 $`;
+                document.getElementsByClassName('text-white')[1].textContent = `Balance: $${this.balance}`;
             }
         );
 

@@ -1,3 +1,4 @@
+import { UsersHttpService } from './user.http.service';
 import { StockDTO } from './../models/stock.dto';
 import { FundsService } from './fund.service';
 import { ModalDTO } from 'src/app/models/modal.dto';
@@ -18,6 +19,7 @@ export class OrdersService {
         private orderHttpService: OrdersHttpService,
         private stockService: StocksService,
         private fundsService: FundsService,
+        private usersHttpService: UsersHttpService,
     ) { }
     saveOrder(result: ModalDTO, companyAbbr) {
         this.stockService.retrieveCompanyInfo({ abbr: companyAbbr }).subscribe((companyInfo: CompanyDTO) => {
@@ -28,11 +30,14 @@ export class OrdersService {
                 companyId: companyInfo.id,
                 direction: result.direction
             };
-            this.fundsService.user.pipe(take(1)).subscribe((response: UserInfoDTO) => {
-                if (Object.keys(response).length !== 0 && response.funds.currentamount > result.total) {
-                    this.orderHttpService.createOrder(order).subscribe();
+
+            this.usersHttpService.retrieveUserData({ email: localStorage.getItem('client_email') }).subscribe(
+                (response: UserInfoDTO) => {
+                    if (response.funds.currentamount > result.total) {
+                        this.orderHttpService.createOrder(order).subscribe();
+                    }
                 }
-            });
+            );
         });
     }
 
@@ -44,6 +49,7 @@ export class OrdersService {
                 this.orderHttpService.closeOrder(orderBody).subscribe((updatedOrder: any) => {
                     this.fundsService
                         .changeBalance({ email: localStorage.getItem('client_email'), amount: updatedOrder.result });
+                        window.location.reload();
                 });
             });
         });

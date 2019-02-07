@@ -9,7 +9,7 @@ import { OrdersService } from 'src/app/core/order.service';
 import { ClientSidebarComponent } from '../sidebar/client-sidebar.component';
 @Injectable()
 @Component({
-    providers: [ ClientSidebarComponent ],
+    providers: [ClientSidebarComponent],
     selector: 'app-stocks',
     templateUrl: './stocks.component.html',
 })
@@ -44,17 +44,14 @@ export class StocksComponent implements OnInit {
                 }
             });
         refDial.afterClosed().subscribe((result: ModalDTO) => {
-            if (result) {
-                if (isNaN(result.total) || +result.units === 0) {
-                    this.notification.openSnackBar('Invalid unit or price', 'OK', 'red');
-                } else {
-                    this.fundsService.substractFund(result);
-                    this.orderService.saveOrder(result, event.data.symbol);
-                    setTimeout(() => {
-                        this.clientSidebar.updateBalance();
-                    }, 1500);
-
-                }
+            if (isNaN(result.total) || +result.units === 0) {
+                this.notification.openSnackBar('Invalid unit or price', 'OK', 'red');
+            } else {
+                this.orderService.saveOrder(result, event.data.symbol);
+                this.fundsService.substractFund(result);
+                setTimeout(() => {
+                    this.clientSidebar.updateBalance();
+                }, 1500);
             }
         });
     }

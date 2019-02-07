@@ -28,7 +28,6 @@ export class ManagerSidebarComponent implements OnInit {
     }
 
     openUpDialog(stock) {
-        console.log(stock)
         const dialogRef = this.dialog.open(ChartsServiceComponent,
             {
                 data: {
@@ -36,5 +35,5 @@ export class ManagerSidebarComponent implements OnInit {
                 }
             });
         return dialogRef.afterClosed();
-      }
+    }
 }

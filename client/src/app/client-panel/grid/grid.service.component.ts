@@ -62,6 +62,7 @@ export class GridServiceComponent implements OnInit {
                     this.ordersService.getOpenOrdersByClient(clienID).subscribe((response: []) => {
                         response.forEach((order: OpenOrderDTO) => {
                             const orderData: any = {};
+                            orderData.id = order.id;
                             orderData.symbol = order.company.abbr;
                             orderData.units = order.units;
                             orderData.direction = order.direction;
