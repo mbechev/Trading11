@@ -74,7 +74,9 @@ $ ng serve
 # Architecture
  - This following section describes an architecture that is used through the development process.
  - (MongoDB <=> MariaDB; Express<=>Nest.js)
+ 
 ![N|Solid](https://raw.githubusercontent.com/Telerik-final-project/Project-Company-Life/master/specification/assets/example-architecture.png)
+
 # Run test
 For testing purposes we use [Jest](https://jestjs.io/) and [Jasmine](https://jasmine.github.io/)
 #### Server
@@ -82,7 +84,7 @@ For testing purposes we use [Jest](https://jestjs.io/) and [Jasmine](https://jas
  ```sh
 $ npm test
 ```
-
+#### Client
  - in client folder you can run tests with
  ```sh
 $ npm run test
