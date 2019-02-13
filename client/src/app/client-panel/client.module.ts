@@ -11,6 +11,7 @@ import { ModalComponent } from './stocks/modal/modal.component';
 import { ClosePosModalComponent } from './portfolio/close-position-modal/close-pos.modal.component';
 import { HistoryComponent } from './history/history.component';
 import { GridServiceComponent } from './grid/grid.service.component';
+import { OnlyNumberDirective } from '../numbersDirective/only-numbers';
 
 @NgModule({
     imports: [SharedMaterialModule, SharedModule, ClientRoutingModule, AgGridModule.withComponents([])],
@@ -23,6 +24,7 @@ import { GridServiceComponent } from './grid/grid.service.component';
         ModalComponent,
         ClosePosModalComponent,
         HistoryComponent,
+        OnlyNumberDirective,
     ],
     entryComponents: [ModalComponent, ClosePosModalComponent],
     providers: [],

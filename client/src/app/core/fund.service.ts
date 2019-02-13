@@ -22,7 +22,7 @@ export class FundsService {
         };
         this.usersHttpService.retrieveUserData({ email: clientCred.email }).subscribe(
             (response: UserInfoDTO) => {
-                if (response.funds.currentamount < clientCred.amount) {
+                if (+response.funds.currentamount < +clientCred.amount) {
                     return this.notificationService.openSnackBar('Payment failed, not enough money', 'OK', 'red');
                 }
                 this.fundsHttpService.substractFund(clientCred).subscribe();

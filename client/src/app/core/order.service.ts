@@ -49,7 +49,7 @@ export class OrdersService {
                 this.orderHttpService.closeOrder(orderBody).subscribe((updatedOrder: any) => {
                     this.fundsService
                         .changeBalance({ email: localStorage.getItem('client_email'), amount: updatedOrder.result });
-                        window.location.reload();
+                        // window.location.reload();
                 });
             });
         });

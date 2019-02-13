@@ -28,7 +28,6 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     NotFoundComponent,
-    OnlyNumberDirective,
     ManageDialogComponent,
     ChartsServiceComponent,
   ],
