@@ -3,14 +3,17 @@
 ![N|Solid](http://www.duckhousecorbridge.co.uk/wp-content/uploads/2016/02/Duck-Favicon.png) 
 
 # General Description
-Trading 11 is an investment management system platform. Our users are people who manage a set of client's portfolios, buy or sell stocks on his/her behalf in real time stock prices.
+Trading 11 is an investment management system platform. Our users are people who manage a set of client's portfolios, buy or sell stocks on his/her behalf with real time stock prices. Each client has a profile with personal information and a portfolio describing his/her investments. Each portfolio has a data regarding the balance of the client, a list of active positions and a history of closed positions.
 It is a single page application done as final project for Telerik Academy Alpha JS course. 
 
 ##### Home Page
 It is a page where user can only to login. Users with admin and manager permission can access only.
-`Admin` is the user who can register new managers, admins, and clients (they cannot login), assign clients to managers, delete profiles.
-`Manager` is the user who can buy or sell stocks for clients, can see their portfolios.
-`Clients` are these for whom we gave our health, nerves, time...and get their money :)
+##### Admin Overview
+`Admin` is the user who can register new managers, admins, and clients (they cannot login), assign/unassign clients to managers, delete profiles.
+##### General Overview
+`Manager` is the user who can buy or sell stocks for clients, can see their portfolios. In this overview manager can see his clients, stocks with chart ana their prices (Buy and Sell), and all active client's positions, information is present via ag-grid.
+##### Client Overview
+`Clients` are these for whom we gave our health, nerves, time...and get their money at the end of course :). Anyway. In this overview manager can manage a client portfolio. Can open new positions for him, close them and see history of all closed positions and the result from them (profit ot loss);
 
 *General Overview* is main page where manager can operate and doing his job, as well as he/she/it can.
 *Client Overview* is main page for the client, but only manager can see it, portfolio, balance, open positions etc.
@@ -73,8 +76,10 @@ $ ng serve
 ```
 # Architecture
  - This following section describes an architecture that is used through the development process.
- - (MongoDB <=> MariaDB; Express<=>Nest.js)
+ - (MongoDB => MariaDB; Express =>Nest.js)
+ 
 ![N|Solid](https://raw.githubusercontent.com/Telerik-final-project/Project-Company-Life/master/specification/assets/example-architecture.png)
+
 # Run test
 For testing purposes we use [Jest](https://jestjs.io/) and [Jasmine](https://jasmine.github.io/)
 #### Server
@@ -82,7 +87,7 @@ For testing purposes we use [Jest](https://jestjs.io/) and [Jasmine](https://jas
  ```sh
 $ npm test
 ```
-
+#### Client
  - in client folder you can run tests with
  ```sh
 $ npm run test
@@ -115,4 +120,4 @@ Telerik Academy tech trainers:
  
 Our mentors:
 - [Alexander Targov](https://github.com/freeride8)
-- all colegues and friends, due to the course :)
+- all **colegues** and **friends**, due to the course :)
